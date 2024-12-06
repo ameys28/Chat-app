@@ -13,16 +13,20 @@ const ChatContainer = () => {
     getMessages,
     isMessagesLoading,
     selectedUser,
+    subscribeToMessages,
+    unsubscribeFromMessages,
   } = useChatStore();
   const { authUser } = useAuthStore();
   const messageEndRef = useRef(null);
 
   // Fetch messages when a new user is selected
   useEffect(() => {
-    if (selectedUser) {
-      getMessages(selectedUser._id);
-    }
-  }, [selectedUser, getMessages]);
+    getMessages(selectedUser._id);
+    subscribeToMessages();
+    return () => {
+      unsubscribeFromMessages();
+    };
+  }, [selectedUser, getMessages, subscribeToMessages, unsubscribeFromMessages]);
 
   // Scroll to the bottom when messages change
   useEffect(() => {
@@ -49,10 +53,13 @@ const ChatContainer = () => {
         {messages.map((message) => (
           <div
             key={message._id}
-            className={`chat ${message.senderId === authUser._id ? "chat-end" : "chat-start"}`}
+            className={`chat ${
+              message.senderId === authUser._id ? "chat-end" : "chat-start"
+            }`}
+            ref={messageEndRef}
           >
             <div className="chat-image avatar">
-              <div className="size-10 rounded-full border">
+              {/* <div className="size-10 rounded-full border">
                 <img
                   src={
                     message.senderId === authUser._id
@@ -61,7 +68,7 @@ const ChatContainer = () => {
                   }
                   alt="profile pic"
                 />
-              </div>
+              </div> */}
             </div>
             <div className="chat-header mb-1">
               <time className="text-xs opacity-50 ml-1">
