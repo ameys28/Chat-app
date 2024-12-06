@@ -19,10 +19,52 @@ Before you start, ensure you have the following installed:
 - **Git**
 - **NPM** or **Yarn**
 
-## Setup Instructions
+# Setup Instructions
 
-### 1. Clone the Repository
+## Prerequisites:
+  Node.js and npm installed.
+  
+  MongoDB installed or access to a MongoDB cloud instance.
+  
+  Git installed.
 
+## Steps to Run Locally:
+1 Clone the Repository
 ```bash
-git clone https://github.com/ameys28/Chat-app.git
-cd Chat-app
+  git clone https://github.com/ameys28/Chat-app.git
+  cd Chat-app
+```
+
+## Set Up Environment Variables Create a .env file in the backend directory with the following:
+```bash
+  MONGO_URI=<your-mongodb-uri>
+  JWT_SECRET=<your-jwt-secret>
+  PORT=5000
+```
+
+## Install Backend Dependencies
+```bash
+  cd backend
+  npm install
+```
+
+## Run the Backend Server
+```bash
+  npm run dev
+```
+
+## Install Frontend Dependencies
+```bash
+  cd frontend
+  npm install
+```
+
+## Run the Frontend Application
+```bash
+  npm run dev
+```
+
+Access the Application Open http://localhost:5173 in your browser.
+
+# Hosted URL
+https://chatease-c94e.onrender.com/
