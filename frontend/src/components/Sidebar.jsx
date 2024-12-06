@@ -9,6 +9,7 @@ const Sidebar = () => {
     useChatStore();
 
   const {onlineUsers} = useAuthStore();
+  
 
   useEffect(() => {
     getUsers();
