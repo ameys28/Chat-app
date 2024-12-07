@@ -67,3 +67,4 @@ Before you start, ensure you have the following installed:
 Access the Application Open http://localhost:5173 in your browser.
 
 # Hosted URL
+chatease-c94e.onrender.com/
